@@ -10,6 +10,12 @@ library.add(fab, fas);
 // Create contact component that displays contact information
 const Contact = () => {
     const { profile } = useContext(DataContext);
+    
+    const captureEmail = () => {
+        const email = profile.email;
+        navigator.clipboard.writeText(email);
+        alert(`Copied ${email} to clipboard!`);
+    }
 
     return (
         <section id='contact'>
@@ -21,7 +27,7 @@ const Contact = () => {
                     <a href={profile.links.linkedIn} target='_blank' rel='noreferrer'>
                         <FontAwesomeIcon icon={['fab', 'linkedin']} size='2x' className='mx-2'/>
                     </a>
-                    <a href={`mailto:${profile.email}`} target='_blank' rel='noreferrer'>
+                    <a onClick={captureEmail} href={`mailto:${profile.email}`} target='_blank' rel='noreferrer'>
                         <FontAwesomeIcon icon={['fas', 'envelope']} size='2x' className='mx-2'/>
                     </a>
                 </div>
