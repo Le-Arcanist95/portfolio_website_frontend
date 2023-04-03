@@ -13,8 +13,10 @@ const Contact = () => {
     
     const captureEmail = async () => {
         try {
-            await navigator.clipboard.writeText(profile.email);
-            alert("Email copied to clipboard!");
+            await navigator.clipboard.writeText(profile.email)
+                .then(() => {
+                    console.log("Email copied to clipboard!");
+                });
         }
             catch (err) {
             console.error("Failed to copy: ", err);
