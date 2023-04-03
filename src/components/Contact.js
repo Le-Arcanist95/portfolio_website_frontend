@@ -11,11 +11,12 @@ library.add(fab, fas);
 const Contact = () => {
     const { profile } = useContext(DataContext);
     
-    const captureEmail = async () => {
+    const emailRedirect = async () => {
         try {
             await navigator.clipboard.writeText(profile.email)
                 .then(() => {
                     console.log("Email copied to clipboard!");
+                    window.location.href = `mailto:${profile.email}`;
                 });
         }
             catch (err) {
@@ -33,9 +34,9 @@ const Contact = () => {
                     <a href={profile.links.linkedIn} target='_blank' rel='noreferrer'>
                         <FontAwesomeIcon icon={['fab', 'linkedin']} size='2x' className='mx-2'/>
                     </a>
-                    <a onClick={captureEmail} href={`mailto:${profile.email}`} target='_blank' rel='noreferrer'>
+                    <div onClick={emailRedirect}>
                         <FontAwesomeIcon icon={['fas', 'envelope']} size='2x' className='mx-2'/>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
