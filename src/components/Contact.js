@@ -11,18 +11,18 @@ library.add(fab, fas);
 const Contact = () => {
     const { profile } = useContext(DataContext);
     
-    const emailRedirect = async () => {
-        try {
-            await navigator.clipboard.writeText(profile.email)
-                .then(() => {
-                    console.log("Email copied to clipboard!");
-                    window.location.href = `mailto:${profile.email}`;
-                });
-        }
-            catch (err) {
-            console.error("Failed to copy: ", err);
-        }
-    }
+    // const handleEmail = async () => {
+    //     try {
+    //         await navigator.clipboard.writeText(profile.email)
+    //             .then(() => {
+    //                 console.log("Email copied to clipboard!");
+    //                 window.location.href = `mailto:${profile.email}`;
+    //             });
+    //     }
+    //     catch (err) {
+    //         console.error("Failed to copy: ", err);
+    //     }
+    // }
 
     return (
         <section id='contact'>
@@ -34,7 +34,9 @@ const Contact = () => {
                     <a href={profile.links.linkedIn} target='_blank' rel='noreferrer'>
                         <FontAwesomeIcon icon={['fab', 'linkedin']} size='2x' className='mx-2'/>
                     </a>
-                    <button onClick={emailRedirect}>
+                    <button onClick={() => {
+                        navigator.clipboard.writeText(profile.email)
+                    }}>
                         <FontAwesomeIcon icon={['fas', 'envelope']} size='2x' className='mx-2'/>
                     </button>
                 </div>
