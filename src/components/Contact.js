@@ -11,18 +11,19 @@ library.add(fab, fas);
 const Contact = () => {
     const { profile } = useContext(DataContext);
     
-    const captureEmail = () => {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(profile.email);
-        } else {
-            const email = document.createElement('textarea');
-            email.value = profile.email;
-            document.body.appendChild(email);
-            email.select();
-            document.execCommand('copy');
-            document.body.removeChild(email);
+    const captureEmail = async () => {
+        navigator.permissions.query({ name: "write-on-clipboard" }).then((result) => {
+            if (result.state === "granted" || result.state === "prompt") {
+                alert("Write access granted!");
+            }
+        });
+        try {
+            await navigator.clipboard.writeText(profile.email);
+            alert("Email copied to clipboard!");
         }
-        alert(`Copied ${profile.email} to clipboard!`);
+            catch (err) {
+            console.error("Failed to copy: ", err);
+        }
     }
 
     return (
