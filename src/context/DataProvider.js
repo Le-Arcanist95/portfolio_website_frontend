@@ -1,11 +1,11 @@
-// Import requires (useContext, createContext, useState, useEffect)
-import { createContext, useState, useEffect, useContext, useCallback } from 'react';
+// Import requires (useContext, createContext, useState, useEffect, useCallback)
+import { createContext } from 'react';
 
 // Import requires (axios)
-import { serverAuth as axios } from '../hooks/useAxios';
+// import { serverAuth as axios } from '../hooks/useAxios';
 
 // Import AuthContext
-import AuthContext from './AuthProvider';
+// import AuthContext from './AuthProvider';
 
 // Create context
 const DataContext = createContext();
