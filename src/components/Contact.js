@@ -12,9 +12,17 @@ const Contact = () => {
     const { profile } = useContext(DataContext);
     
     const captureEmail = () => {
-        const email = profile.email;
-        navigator.clipboard.writeText(email);
-        alert(`Copied ${email} to clipboard!`);
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(profile.email);
+        } else {
+            const email = document.createElement('textarea');
+            email.value = profile.email;
+            document.body.appendChild(email);
+            email.select();
+            document.execCommand('copy');
+            document.body.removeChild(email);
+        }
+        alert(`Copied ${profile.email} to clipboard!`);
     }
 
     return (
