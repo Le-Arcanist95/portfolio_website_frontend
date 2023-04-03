@@ -12,11 +12,6 @@ const Contact = () => {
     const { profile } = useContext(DataContext);
     
     const captureEmail = async () => {
-        navigator.permissions.query({ name: "write-on-clipboard" }).then((result) => {
-            if (result.state === "granted" || result.state === "prompt") {
-                alert("Write access granted!");
-            }
-        });
         try {
             await navigator.clipboard.writeText(profile.email);
             alert("Email copied to clipboard!");
