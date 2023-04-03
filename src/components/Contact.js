@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import DataContext from '../context/DataProvider';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +10,7 @@ library.add(fab, fas);
 // Create contact component that displays contact information
 const Contact = () => {
     const { profile } = useContext(DataContext);
+    const [toggle, setToggle] = useState(false);
     
     // const handleEmail = async () => {
     //     try {
@@ -35,10 +36,19 @@ const Contact = () => {
                         <FontAwesomeIcon icon={['fab', 'linkedin']} size='2x' className='mx-2'/>
                     </a>
                     <button onClick={() => {
+                        setToggle(true);
                         navigator.clipboard.writeText(profile.email)
+                            .then(() => {
+                                console.log("Email copied to clipboard!");
+                                setTimeout(() => {
+                                    setToggle(false);
+                                }, 2000);
+                            }
+                        );
                     }}>
                         <FontAwesomeIcon icon={['fas', 'envelope']} size='2x' className='mx-2'/>
                     </button>
+                    {toggle && <p className='text-sm text-center'>Email copied to clipboard!</p>}
                 </div>
             </div>
         </section>
