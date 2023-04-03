@@ -34,9 +34,9 @@ const Contact = () => {
                     <a href={profile.links.linkedIn} target='_blank' rel='noreferrer'>
                         <FontAwesomeIcon icon={['fab', 'linkedin']} size='2x' className='mx-2'/>
                     </a>
-                    <div onClick={emailRedirect}>
+                    <button onClick={emailRedirect}>
                         <FontAwesomeIcon icon={['fas', 'envelope']} size='2x' className='mx-2'/>
-                    </div>
+                    </button>
                 </div>
             </div>
         </section>
