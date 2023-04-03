@@ -48,8 +48,8 @@ const Contact = () => {
                     }}>
                         <FontAwesomeIcon icon={['fas', 'envelope']} size='2x' className='mx-2'/>
                     </button>
-                    {toggle && <p className='text-sm text-center'>Email copied to clipboard!</p>}
                 </div>
+                {toggle && <p className='text-sm text-center border-0 rounded p-2 bg-slate-400 dark:bg-white'>Email copied to clipboard!</p>}
             </div>
         </section>
     );
