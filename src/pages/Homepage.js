@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import ThemeContext from '../context/ThemeProvider';
 import DataContext from '../context/DataProvider';
 
-import LoadingSpinner from '../components/LoadingSpinner';
+// import LoadingSpinner from '../components/LoadingSpinner';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
 import About from '../components/About';
@@ -27,7 +27,7 @@ const Homepage = () => {
 
     return (
         <>
-            {data.isLoading && <LoadingSpinner />}
+            {/* {data.isLoading && <LoadingSpinner />}
             {!data.isLoading && data.isLoaded && (
                 <main className={darkMode ? 'dark' : ''}>
                     <div className='bg-gradient-to-br from-black to-white dark:from-white dark:to-black' id='backgroundLayer'>
@@ -41,7 +41,19 @@ const Homepage = () => {
                         <Footer/>
                     </div>
                 </main>
-            )}
+            )} */}
+            <main className={darkMode ? 'dark' : ''}>
+                    <div className='bg-gradient-to-br from-black to-white dark:from-white dark:to-black' id='backgroundLayer'>
+                        <Header />
+                        <div className='container mx-auto w-4/5 space-y-5 p-12 bg-light dark:bg-dark dark:text-light' id='webpageLayer'>
+                            <Intro />
+                            <About />
+                            <ProjectList />
+                            <Contact />
+                        </div>
+                        <Footer/>
+                    </div>
+                </main>
         </>
     );
 }

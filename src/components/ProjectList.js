@@ -13,7 +13,8 @@ const ProjectList = () => {
             <hr className='w-1/4 h-1 mx-auto my-3 bg-dark border-0 rounded dark:bg-light'/>
             <div className='flex flex-col justify-center'>
                 {projects.map(project => (
-                    <Project key={project._id} project={project}/>
+                    // Change key to project._id when ready to implement authentication
+                    <Project key={project.name} project={project}/>
                 ))}
             </div>
         </section>
